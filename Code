@@ -1,0 +1,56 @@
+using System;
+using System.Collections.Generic;
+
+public class Employee
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+
+    public Employee(string name, int age)
+    {
+        Name = name;
+        Age = age;
+    }
+
+    public override string ToString()
+    {
+        return $"{Name}, {Age} лет";
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        // Список сотрудников
+        List<Employee> employees = new List<Employee>
+        {
+            new Employee("Анна", 28),
+            new Employee("Иван", 35),
+            new Employee("Мария", 22),
+            new Employee("Алексей", 30)
+        };
+
+        // Сортировка сотрудников по имени
+        employees.Sort((e1, e2) => e1.Name.CompareTo(e2.Name));
+
+        // Вывод отсортированного списка по имени
+        Console.WriteLine("Сотрудники, отсортированные по имени:");
+        foreach (var employee in employees)
+        {
+            Console.WriteLine(employee);
+        }
+
+        Console.WriteLine();
+
+        // Сортировка сотрудников по возрасту
+        employees.Sort((e1, e2) => e1.Age.CompareTo(e2.Age));
+
+        // Вывод отсортированного списка по возрасту
+        Console.WriteLine("Сотрудники, отсортированные по возрасту:");
+        foreach (var employee in employees)
+        {
+            Console.WriteLine(employee);
+        }
+    }
+}
